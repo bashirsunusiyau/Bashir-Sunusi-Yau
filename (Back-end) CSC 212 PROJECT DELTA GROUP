@@ -30,3 +30,21 @@
          padding-top:5px;
          color:black;
          }
+        ul{
+          list-style-type:none;
+          margin:0;
+          padding:0;
+          overflow: hidden;
+          }
+         li{
+           float:right;
+           }
+          li a{
+            font-family:sans-serif,helvetica,Aerial;
+            display:block;
+            color:#FF7070
+            text-aling:center;
+            padding:25px,40px;
+            text-decoration:none;
+            }
+
