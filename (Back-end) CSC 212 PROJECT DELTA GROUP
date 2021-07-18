@@ -1,0 +1,32 @@
+<!Doctype>
+<html>
+<head>
+    <tittle>pharmacy</tittle>
+    <link rel="stylesheet"type="text/CSS"href="style.CSS">
+    <link rel=pre-connect"href="https://fonts.gstatic.com">
+    <link href="https:fonts.googleapis.com/css2?family=viaoda+libre&display=swap"rel="stylesheet">
+
+</head>
+
+    <style>
+       body{
+          background-image:linear gradient(rgb(255,255,255),#50EF6E,url("images/images(8).jpeg");
+          background-size:cover;
+        }
+       header{
+           background-color:#0E223D;
+           boarder-style:dotted groove;
+           margin-top:2px;
+           boarder-bottom-left-radius:25px;
+           boarder-bottom-right-radius:25px;
+        }
+       header1{
+           font-size:220%;
+           color:green;
+           text-transform:uppercase;
+         }
+        h5{
+         margin-left:15%
+         padding-top:5px;
+         color:black;
+         }
