@@ -49,6 +49,25 @@
         li:hover{
            background-color:rgb(97,40,37,0.945);
           }
+         </style>
+           <body>
+              <header>
+                <img src="images/repeat grid 1.png"alt=""width="8%" height="18%" style="float:left;margin="20px">
+                <strong><h1>DELTA PHARMACY</h1></strong>
+                 <h5>Your Number One Online Pharmacy</h5>
+           <hr>
+           <ul>
+            <li><a href="delta.html"style="color:rgb(230,68,67);">HOME</a></li>
+            <li><a href="The e-chemist consultancy.html">CONSULTANCY</a></li>
+               <strong><li><a href="pharmacy</a></li></strong>
+               <li style="margin-right:550px;">
+               <a class="active"href="emergency services.html">EMERGENCY SERVICES</a></li>
+           </ul>
+           </hr>
+                </header>
+              <h1>ORDER YOUR DRUGS HERE</h1>
+              <form>
+                   
 
         
          
