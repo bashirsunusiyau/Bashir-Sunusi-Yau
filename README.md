@@ -2,15 +2,15 @@
 //initialize the session 
 session_start();
 
-//Check if the user is already logged in,if yes then redirect him to welcome page
+//Check if the user is already logged in,if yes then redirect him to welcome page.
 if(is set($_SESSION["loggedin"]) && $_SESSION ["logged in"] === true){
       header("location:index.php");
       exit;
 }
-//Include Config file
+//Include Config file.
 require_once"dbconnect/dbconnect.php";
 
-//Define variables and initialize with empty values
+//Define variables and initialize with empty values.
 $username = $password = "";
 $username_err = $password_err = $login_err = "";
 
