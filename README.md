@@ -67,6 +67,40 @@
                 </header>
               <h1>ORDER YOUR DRUGS HERE</h1>
               <form>
+                <h2>
+                <label for=name>Name:</label>
+                <input type="text" name="name" max length="45" required>
+              <br>
+              <br>
+              <label for=phone>Phone:</label>
+              <input type="tel"type="number" name="phone" min length="11" max length="11" required>
+               <br>
+               <br>
+               <label for=address>Address:</label>
+               <input type="text area" name="email"max length="50" required>
+                <br>
+                <br>
+                </h2>
+                 <h4>
+                  Rate Your Emergency:
+                <input type="radio" name="devices" value="urgent">Urgent
+                <input type="radio" name="devices" value="critical">Critical
+                <br>
+                <p>Give a brief explanation about your ailment</p>
+                <text area rows="15" cols="40" name="text"></text area>
+                  </h4>
+                    <br>
+                 <label for="submit"></label>
+                 <input type="submit" name="submit" action="submit">
+                 <label for="reset"></label>
+                 <input type="reset" name="reset" action="reset">
+                    <br>
+                    <br>
+                </form>
+        </body>
+     </html>
+
+             
                    
 
         
