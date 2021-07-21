@@ -83,10 +83,10 @@
                 </h2>
                  <h4>
                   Rate Your Emergency:
-                <input type="radio" name="devices" value="urgent">Urgent
+                <input type="radio" name="devices" value="urgent">Urgent,
                 <input type="radio" name="devices" value="critical">Critical
                 <br>
-                <p>Give a brief explanation about your ailment</p>
+                <p>Give a brief explanation about your ailment.</p>
                 <text area rows="15" cols="40" name="text"></text area>
                   </h4>
                     <br>
