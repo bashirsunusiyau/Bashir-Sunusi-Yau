@@ -1,104 +1,90 @@
-<!Doctype>
-<html>
-<head>
-      <tittle>pharmacy</tittle>
-      <link rel="stylesheet "type=" text/CSS"href="style.CSS">
-      <link rel="preconnect "href=https://fonts.gstatic.com">
-      <link href=" https://fonts.googleapis.com/css2?family=viaoda+libre&display=swap"rel="stylesheet">
-</head>
-    <style>
-        body{
-          background-image:linear gradient(rgb(255,255,255),#50EE6F),url("images/images(8).jpeg);
-          background-size:cover;
-          }
-        header{
-          background color:#0F112D
-          border-style:dotted groove;
-          margin-top:2px;
-          border-bottom-left-radius:20px;
-          border-bottom-right-radius:25px;
-          }
-        header h1{
-          Font-size:225%
-          color:green;
-          text-transform:uppercase;
-          }
-        h5{
-          margin-left:15%;
-          padding-top:5px;
-          color:cornsilk;
-          }
-        ul{
-          list-style--type:none;
-          margin:0;
-          padding:0;
-          overflow:hidden;
-          }
-        li{
-          float:right;
-          }
-        li a{
-          font-family:Sans-serif,Aerial,Helvetica;
-          display: block;
-          color:#FF7065;
-          text-align:center;
-          padding: 25px, 30px;
-          text-decoration:none;
-          }
-        li:hover{
-           background-color:rgb(97,40,37,0.945);
-          }
-         </style>
-           <body>
-              <header>
-                <img src="images/repeat grid 1.png"alt=""width="8%" height="18%" style="float:left;margin="20px">
-                <strong><h1>DELTA PHARMACY</h1></strong>
-                 <h5>Your Number One Online Pharmacy</h5>
-           <hr>
-           <ul>
-            <li><a href="delta.html"style="color:rgb(230,68,67);">HOME</a></li>
-            <li><a href="The e-chemist consultancy.html">CONSULTANCY</a></li>
-               <strong><li><a href="pharmacy</a></li></strong>
-               <li style="margin-right:550px;">
-               <a class="active"href="emergency services.html">EMERGENCY SERVICES</a></li>
-           </ul>
-           </hr>
-                </header>
-              <h1>ORDER YOUR DRUGS HERE</h1>
-              <form>
-                <h2>
-                <label for=name>Name:</label>
-                <input type="text" name="name" max length="45" required>
-              <br>
-              <br>
-              <label for=phone>Phone:</label>
-              <input type="tel"type="number" name="phone" min length="11" max length="11" required>
-               <br>
-               <br>
-               <label for=address>Address:</label>
-               <input type="text area" name="email"max length="50" required>
-                <br>
-                <br>
-                </h2>
-                 <h4>
-                  Rate Your Emergency:
-                <input type="radio" name="devices" value="urgent">Urgent,
-                <input type="radio" name="devices" value="critical">Critical
-                <br>
-                <p>Give a brief explanation about your ailment.</p>
-                <text area rows="15" cols="40" name="text"></text area>
-                  </h4>
-                    <br>
-                 <label for="submit"></label>
-                 <input type="submit" name="submit" action="submit">
-                 <label for="reset"></label>
-                 <input type="reset" name="reset" action="reset">
-                    <br>
-                    <br>
-                </form>
-        </body>
-     </html>
+<?php
+//initialize the session 
+session_start();
 
+//Check if the user is already logged in,if yes then redirect him to welcome page
+if(is set($_SESSION["loggedin"]) && $_SESSION ["logged in"] === true){
+      header("location:index.php");
+      exit;
+}
+//Include Config file
+require_once"dbconnect/dbconnect.php";
+
+//Define variables and initialize with empty values
+$username = $password = "";
+$username_err = $password_err = $login_err = "";
+
+//processing form data when form is submitted
+if($_SERVER["REQUEST_METHOD"] =="POST"){
+
+     //Check if username is empty
+     if(empty(trim($_POST["username"]))){
+         $username_err = " please enter your username.";
+        } else{
+            $username = trim($_POST["username"]);
+        }
+
+      //Check if password is empty
+      if(empty(trim($_POST["password"]))){
+         $_password_err = "please enter your password.";
+       } else{
+           $password = trim($_POST["password"]);
+       }
+      //Validate credentials
+      if(empty($username_err) && empty($password_err)){
+           //prepare a select statement
+           $sql = "SELECT id, username,password From admin where username = " username";
+
+           if($stmt = $pdo->prepare($sql)){
+               //Blind variables to the prepared statement as parameters
+               $stmt->blindParam(":username",$param_username,PDO::PARAM_STR);
+
+               //set parameters
+               $param_username = trim($_POST["username"]);
+
+               //Attempt to execute the prepared statement
+               if($stmt->execute()){
+                   //check if username exists,if yes then verify password
+                   if($stmt->rowCount() == 1){
+                       if($row = $stmt->fetch()){
+                            $id = $row["id"];
+                            $username = $row["username"];
+                            $hashed_password = $row["password"];
+                             if(password_verify($password, $hashed_password)){
+                                //Password is correct,so start a new session
+                                session_start();
+
+                                //Store data in session variables
+                                $_SESSION["loggedin"] = true;
+                                $_SESSION["id"] = $id;
+                                $_SESSION["username"] = $username;
+
+                                //Redirect user to welcome page
+                                header("location: dashboard.php");
+                        
+                            } else{
+                               //password is not valid, display a generic error message
+                               $login_err = "Invalid username or password.;
+                            }
+                         }
+                      } else{
+                           //Username doesn't exist,display a generic error message
+                           $login_err =" Invalid username or password. ";
+                      }
+                   } else{
+                          echo " Oops! Something went wrong. Please try again later.";
+                   }
+     
+                   //Close statement 
+                       unset($stmt);
+               }
+           }
+         //Close connection
+         unset($pdo);
+?>
+                 
+            
+                      
              
                    
 
